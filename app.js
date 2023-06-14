@@ -10,7 +10,7 @@ io.on("connection", (socket) => {
 })
 
 const exphbs  = require('express-handlebars');
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs.engine({ defaultLayout: false }));
 app.set('view engine', 'handlebars');
 //Establish your public folder
 app.use('/public', express.static('public'))
