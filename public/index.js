@@ -5,6 +5,17 @@ $(document).ready(()=>{
   //Keep track of the current user
   let currentUser;
 
+
+  $('#new-channel-btn').click( () => {
+    let newChannel = $('#new-channel-input').val();
+
+    if(newChannel.length > 0){
+      // Emit the new channel to the server
+      socket.emit('new channel', newChannel);
+      $('#new-channel-input').val("");
+    }
+  });
+
   $('#create-user-btn').click((e)=>{
     e.preventDefault();
     if($('#username-input').val().length > 0){
@@ -61,6 +72,4 @@ $(document).ready(()=>{
       $('.users-online').append(`<p>${username}</p>`);
     }
   });
-
-
 })
